@@ -1,0 +1,136 @@
+// vars 〰️
+
+// colors 🔴🔵
+$red = hsl(346.8, 100%, 44%)
+$light_red = hsl(6.2, 100%, 89.2%)
+$green = hsl(175.9, 100%, 40.3%)
+$light_green = hsl(173.1, 60.3%, 87.7%)
+
+// fonts 🔤
+@font-face
+	font-family Sign Painter
+	font-style cursive
+	src url(./fonts/sign/SignPainter.otf)
+
+@font-face
+	font-family Din
+	font-style normal
+	font-weight heavy
+	src url(./fonts/din/DINNextLTPro-Heavy.otf)
+	
+// animations 💃
+$keyframe-name = dance
+@keyframes {$keyframe-name}
+	for i in 0..2	
+		{50% * i}
+			transform rotate(i*30+0deg)
+			
+@keyframes pop {
+	33% {
+		transform scale(1.1) translate3d(0,-22rem,0)
+	}
+	
+	66% {
+		transform scale(.9) translate3d(0,-22rem,0)
+	}
+
+	100% {
+		transform scale(1) translate3d(0,-22rem,0)
+	}
+}
+
+// quick reset 💛
+*
+	box-sizing border-box
+	
+html
+	font-size 62.5%
+
+body, h1, h2, h3, h4, h5, h6
+	margin 0
+	padding 0
+	text-align center
+	
+	
+img, video
+	width 100%
+	max-width 100%
+
+// the styles 😎	
+.__container
+	display flex
+	flex-flow column wrap
+	justify-content flex-start
+	align-items center
+	
+	width 100%
+	min-height 100vh
+	
+.__first,.__details
+	display flex
+	flex-flow row wrap
+	justify-content center
+	align-items center
+	width 100%
+	min-height 100vh
+	&::before,&::after
+		content ''
+		position absolute
+		width 100vw
+		height 1.5rem
+		background-image url(./img/border.svg)
+		background-repeat repeat-x
+		left 0
+	&::before
+		top 0
+	&::after
+		bottom 0
+		transform rotate(180deg)
+
+.__first
+	height 100vh
+	background-color $light_green
+	position relative
+		
+	.__tree-wrap
+		transform translate3d(-.75rem,0rem,0)
+		#christmas-tree
+			height 100%
+			width 95%
+			
+			[data-name=snowflakes]
+				g
+					transform-origin center
+					animation dance 1s infinite alternate
+	
+.__details
+	background-color $light_red
+	position relative
+	justify-content space-around
+	align-items flex-start
+	padding-left 13%
+	overflow hidden
+	&::before
+		transform translate3d(0,-.15rem,0)
+	
+	.__ornament
+		width 13%
+		position relative
+		transform translate3d(0,-8rem,0)
+		&:nth-of-type(4)
+			transform translate3d(0,-14rem,0)
+		&:nth-of-type(6)
+			transform translate3d(0,-14rem,0)
+	
+	.date-time
+		position absolute
+		left 4%
+		width 60%
+		transform translate3d(0,-22rem,0)
+		&:hover
+			animation pop .4s 
+
+// nested media query loop 🔁
+// for i in 1..4
+// 	@media (min-width: 2**(i+7)px)
+// 		font-size 2.4rem*i
