@@ -25,6 +25,7 @@ h6 {
   margin: 0;
   padding: 0;
   text-align: center;
+  background-color: #ffcec8;
 }
 img,
 video {
@@ -47,11 +48,15 @@ video {
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
+  margin-right: auto;
+  margin-left: auto;
   width: 100%;
-  min-height: 100vh;
+  min-height: 400vh;
 }
 .__first,
-.__details {
+.__details,
+.__lights,
+.__location {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -101,9 +106,26 @@ video {
   -webkit-transform: translate3d(-0.75rem, 0rem, 0);
           transform: translate3d(-0.75rem, 0rem, 0);
 }
+@media screen and (min-width: 768px) {
+  .__first .__tree-wrap {
+    -webkit-transform: translate3d(-3.2rem, 0rem, 0);
+            transform: translate3d(-3.2rem, 0rem, 0);
+  }
+}
+@media screen and (min-width: 992px) {
+  .__first .__tree-wrap {
+    -webkit-transform: translate3d(-6.5rem, 0rem, 0);
+            transform: translate3d(-6.5rem, 0rem, 0);
+  }
+}
 .__first .__tree-wrap #christmas-tree {
   height: 100%;
   width: 95%;
+}
+@media screen and (min-width: 768px) {
+  .__first .__tree-wrap #christmas-tree {
+    width: 120%;
+  }
 }
 .__first .__tree-wrap #christmas-tree [data-name=snowflakes] g {
   -webkit-transform-origin: center;
@@ -114,45 +136,207 @@ video {
 .__details {
   background-color: #ffcec8;
   position: relative;
-  -webkit-justify-content: space-around;
-      -ms-flex-pack: distribute;
-          justify-content: space-around;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
   -webkit-box-align: start;
   -webkit-align-items: flex-start;
       -ms-flex-align: start;
               -ms-grid-row-align: flex-start;
           align-items: flex-start;
-  padding-left: 13%;
   overflow: hidden;
+  min-height: 110vh;
 }
-.__details::before {
-  -webkit-transform: translate3d(0, -0.15rem, 0);
-          transform: translate3d(0, -0.15rem, 0);
-}
-.__details .__ornament {
+.__details .__img {
   width: 13%;
-  position: relative;
-  -webkit-transform: translate3d(0, -8rem, 0);
-          transform: translate3d(0, -8rem, 0);
+  margin-right: 1.5rem;
 }
-.__details .__ornament:nth-of-type(4) {
-  -webkit-transform: translate3d(0, -14rem, 0);
-          transform: translate3d(0, -14rem, 0);
+.__details .__img:nth-of-type(2) {
+  -webkit-transform: translate3d(0, -20vw, 0);
+          transform: translate3d(0, -20vw, 0);
 }
-.__details .__ornament:nth-of-type(6) {
-  -webkit-transform: translate3d(0, -14rem, 0);
-          transform: translate3d(0, -14rem, 0);
+@media screen and (min-width: 992px) {
+  .__details .__img:nth-of-type(2) {
+    -webkit-transform: translate3d(-10vw, -30vw, 0);
+            transform: translate3d(-10vw, -30vw, 0);
+  }
 }
-.__details .date-time {
+.__details .__img:nth-of-type(3) {
+  -webkit-transform: translate3d(0, -50vw, 0);
+          transform: translate3d(0, -50vw, 0);
+}
+@media screen and (min-width: 992px) {
+  .__details .__img:nth-of-type(3) {
+    -webkit-transform: translate3d(0, -60vw, 0);
+            transform: translate3d(0, -60vw, 0);
+  }
+}
+.__details .__img:nth-of-type(4) {
+  -webkit-transform: translate3d(0, -60vw, 0);
+          transform: translate3d(0, -60vw, 0);
+}
+@media screen and (min-width: 992px) {
+  .__details .__img:nth-of-type(4) {
+    -webkit-transform: translate3d(0, -80vw, 0);
+            transform: translate3d(0, -80vw, 0);
+  }
+}
+.__details .__img:nth-of-type(5) {
+  -webkit-transform: translate3d(0, -40vw, 0);
+          transform: translate3d(0, -40vw, 0);
+}
+@media screen and (min-width: 992px) {
+  .__details .__img:nth-of-type(5) {
+    -webkit-transform: translate3d(0, -60vw, 0);
+            transform: translate3d(0, -60vw, 0);
+  }
+}
+.__details #date-time {
   position: absolute;
-  left: 4%;
-  width: 60%;
-  -webkit-transform: translate3d(0, -22rem, 0);
-          transform: translate3d(0, -22rem, 0);
+  bottom: 0;
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: end;
+  -webkit-align-items: flex-end;
+      -ms-flex-align: end;
+          align-items: flex-end;
 }
-.__details .date-time:hover {
-  -webkit-animation: pop 0.4s;
-          animation: pop 0.4s;
+.__details #date-time svg {
+  width: 75%;
+  margin-bottom: 23%;
+}
+@media screen and (min-width: 992px) {
+  .__details #date-time svg {
+    margin-bottom: 35%;
+  }
+}
+.__details #date-time svg:hover {
+  -webkit-animation: pop 0.45s ease-in-out forwards;
+          animation: pop 0.45s ease-in-out forwards;
+}
+.__lights {
+  background-color: #f8f8ff;
+  -webkit-flex-flow: column nowrap;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.__lights .light-row {
+  width: 100%;
+  -webkit-transition: none;
+  transition: none;
+  position: relative;
+}
+@media screen and (min-width: 320px), (max-width: 375px) {
+  .__lights .light-row {
+    height: 25vh;
+  }
+}
+@media screen and (min-width: 375px) {
+  .__lights .light-row {
+    max-height: 25rem;
+    height: 25rem;
+  }
+}
+.__lights .light-row::before,
+.__lights .light-row::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: 120%;
+  background-repeat: repeat-x;
+  background-position: 65% -3rem;
+  opacity: 1;
+}
+@media screen and (min-width: 320px), (max-width: 375px) {
+  .__lights .light-row::before,
+  .__lights .light-row::after {
+    background-size: 120%;
+  }
+}
+@media screen and (min-width: 375px) {
+  .__lights .light-row::before,
+  .__lights .light-row::after {
+    background-size: contain;
+    background-position: center -3rem;
+  }
+}
+@media screen and (min-width: 992px) {
+  .__lights .light-row::before,
+  .__lights .light-row::after {
+    background-position: 65% -6rem;
+  }
+}
+.__lights .light-row::before {
+  background-image: url("./img/lights-on.svg");
+  -webkit-animation: lights 1s steps(2, end) infinite reverse;
+          animation: lights 1s steps(2, end) infinite reverse;
+}
+.__lights .light-row::after {
+  background-image: url("./img/lights-off.svg");
+  -webkit-animation: lights 1s steps(2, end) infinite;
+          animation: lights 1s steps(2, end) infinite;
+}
+.__lights .light-row.__bottom {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+.__lights .snacks-and-drinks {
+  background-image: url("./img/snacks-and-drinks-mobile.svg");
+  background-repeat: no-repeat;
+  height: 50vh;
+  width: 100%;
+  background-position: center;
+  background-size: contain;
+}
+@media screen and (min-width: 992px) {
+  .__lights .snacks-and-drinks {
+    background-image: url("./img/snacks-and-drinks.svg");
+    width: 80%;
+    height: 30vh;
+  }
+}
+.__lights .snacks-and-drinks img {
+  width: 130%;
+}
+.__location {
+  background-color: #ffcec8;
+  -webkit-box-align: start;
+  -webkit-align-items: flex-start;
+      -ms-flex-align: start;
+              -ms-grid-row-align: flex-start;
+          align-items: flex-start;
+  padding-top: 12vh;
+}
+.__location .__wreaths {
+  background-image: url("./img/wreaths.svg");
+  background-repeat: repeat-x;
+  height: 25vh;
+  width: 100%;
+  background-position: center;
+  background-size: contain;
+}
+#light-circle:nth-of-type(odd) {
+  -webkit-animation: flash 1s steps(2) infinite;
+          animation: flash 1s steps(2) infinite;
+}
+#light-circle:nth-of-type(even) {
+  -webkit-animation: flash 1s steps(2) infinite reverse;
+          animation: flash 1s steps(2) infinite reverse;
 }
 @-webkit-keyframes dance {
   0% {
@@ -183,30 +367,98 @@ video {
   }
 }
 @-webkit-keyframes pop {
-  33% {
-    -webkit-transform: scale(1.1) translate3d(0, -22rem, 0);
-            transform: scale(1.1) translate3d(0, -22rem, 0);
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
   }
-  66% {
-    -webkit-transform: scale(0.9) translate3d(0, -22rem, 0);
-            transform: scale(0.9) translate3d(0, -22rem, 0);
+  25% {
+    -webkit-transform: scale(1.01);
+            transform: scale(1.01);
   }
-  100% {
-    -webkit-transform: scale(1) translate3d(0, -22rem, 0);
-            transform: scale(1) translate3d(0, -22rem, 0);
+  50% {
+    -webkit-transform: scale(0.99);
+            transform: scale(0.99);
+  }
+  75% {
+    -webkit-transform: scale(1.01);
+            transform: scale(1.01);
+  }
+  to {
+    -webkit-transform: scale(1);
+            transform: scale(1);
   }
 }
 @keyframes pop {
-  33% {
-    -webkit-transform: scale(1.1) translate3d(0, -22rem, 0);
-            transform: scale(1.1) translate3d(0, -22rem, 0);
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
   }
-  66% {
-    -webkit-transform: scale(0.9) translate3d(0, -22rem, 0);
-            transform: scale(0.9) translate3d(0, -22rem, 0);
+  25% {
+    -webkit-transform: scale(1.01);
+            transform: scale(1.01);
+  }
+  50% {
+    -webkit-transform: scale(0.99);
+            transform: scale(0.99);
+  }
+  75% {
+    -webkit-transform: scale(1.01);
+            transform: scale(1.01);
+  }
+  to {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+@-webkit-keyframes flash {
+  0% {
+    fill: #ffcec8;
+    opacity: 0;
   }
   100% {
-    -webkit-transform: scale(1) translate3d(0, -22rem, 0);
-            transform: scale(1) translate3d(0, -22rem, 0);
+    fill: #cdf3ee;
+    opacity: 1;
+  }
+}
+@keyframes flash {
+  0% {
+    fill: #ffcec8;
+    opacity: 0;
+  }
+  100% {
+    fill: #cdf3ee;
+    opacity: 1;
+  }
+}
+@-webkit-keyframes lights {
+  0% {
+    visibility: collapse;
+  }
+  100% {
+    visibility: visible;
+  }
+}
+@keyframes lights {
+  0% {
+    visibility: collapse;
+  }
+  100% {
+    visibility: visible;
+  }
+}
+@-webkit-keyframes flash {
+  from {
+    fill: #cdf3ee;
+  }
+  to {
+    fill: #ffcec8;
+  }
+}
+@keyframes flash {
+  from {
+    fill: #cdf3ee;
+  }
+  to {
+    fill: #ffcec8;
   }
 }

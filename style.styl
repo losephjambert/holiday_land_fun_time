@@ -26,18 +26,39 @@ $keyframe-name = dance
 			transform rotate(i*30+0deg)
 			
 @keyframes pop {
-	33% {
-		transform scale(1.1) translate3d(0,-22rem,0)
-	}
-	
-	66% {
-		transform scale(.9) translate3d(0,-22rem,0)
+	0%{
+		transform scale(1)
 	}
 
-	100% {
-		transform scale(1) translate3d(0,-22rem,0)
+	25% {
+		transform scale(1.01)
+	}
+	
+	50% {
+		transform scale(.99)
+	}
+
+	75% {
+		transform scale(1.01)
+	}
+	to{
+		transform scale(1)
 	}
 }
+
+@keyframes flash
+	0%
+		fill $light_red
+		opacity 0
+	100%
+		fill $light_green
+		opacity 1
+		
+@keyframes lights
+	0%
+		visibility collapse
+	100%
+		visibility visible
 
 // quick reset 💛
 *
@@ -50,6 +71,7 @@ body, h1, h2, h3, h4, h5, h6
 	margin 0
 	padding 0
 	text-align center
+	background-color $light_red
 	
 	
 img, video
@@ -57,22 +79,30 @@ img, video
 	max-width 100%
 
 // the styles 😎	
+
+// shared
 .__container
 	display flex
 	flex-flow column wrap
 	justify-content flex-start
 	align-items center
+	margin-right auto
+	margin-left auto
 	
 	width 100%
-	min-height 100vh
-	
-.__first,.__details
+	min-height 400vh
+
+.__first,.__details,.__lights,.__location
 	display flex
 	flex-flow row wrap
 	justify-content center
 	align-items center
 	width 100%
 	min-height 100vh
+// end shared
+
+// __first
+.__first,.__details
 	&::before,&::after
 		content ''
 		position absolute
@@ -94,43 +124,150 @@ img, video
 		
 	.__tree-wrap
 		transform translate3d(-.75rem,0rem,0)
+		@media screen and (min-width: 768px)
+			transform translate3d(-3.2rem,0rem,0)
+		@media screen and (min-width: 992px)
+			transform translate3d(-6.5rem,0rem,0)
 		#christmas-tree
 			height 100%
 			width 95%
+			@media screen and (min-width: 768px)
+				width 120%
 			
 			[data-name=snowflakes]
 				g
 					transform-origin center
 					animation dance 1s infinite alternate
-	
+// end __first
+
+// __details
 .__details
 	background-color $light_red
 	position relative
-	justify-content space-around
+	justify-content flex-end
 	align-items flex-start
-	padding-left 13%
 	overflow hidden
-	&::before
-		transform translate3d(0,-.15rem,0)
-	
-	.__ornament
+	min-height 110vh
+	.__img
 		width 13%
-		position relative
-		transform translate3d(0,-8rem,0)
+		margin-right 1.5rem
+		&:nth-of-type(2)
+			transform translate3d(0,-20vw,0)
+			@media screen and (min-width: 992px)
+				transform translate3d(-10vw,-30vw,0)
+		&:nth-of-type(3)
+			transform translate3d(0,-50vw,0)
+			@media screen and (min-width: 992px)
+				transform translate3d(0,-60vw,0)
 		&:nth-of-type(4)
-			transform translate3d(0,-14rem,0)
-		&:nth-of-type(6)
-			transform translate3d(0,-14rem,0)
-	
-	.date-time
+			transform translate3d(0,-60vw,0)
+			@media screen and (min-width: 992px)
+				transform translate3d(0,-80vw,0)
+		&:nth-of-type(5)
+			transform translate3d(0,-40vw,0)
+			@media screen and (min-width: 992px)
+				transform translate3d(0,-60vw,0)
+	#date-time
 		position absolute
-		left 4%
-		width 60%
-		transform translate3d(0,-22rem,0)
-		&:hover
-			animation pop .4s 
+		bottom 0
+		width 100%
+		display flex
+		justify-content center
+		align-items flex-end
+		svg
+			width 75%
+			margin-bottom 23%
+			@media screen and (min-width: 992px)
+				margin-bottom 35%
+			&:hover
+				animation pop .45s ease-in-out forwards
+// end __details
 
-// nested media query loop 🔁
-// for i in 1..4
-// 	@media (min-width: 2**(i+7)px)
-// 		font-size 2.4rem*i
+// __lights
+.__lights
+	background-color ghostwhite
+	flex-flow column nowrap
+	justify-content space-between
+	.light-row
+		@media screen and (min-width:320px),(max-width:375px)
+			height 25vh
+		@media screen and (min-width:375px)
+			max-height 25rem
+			height 25rem
+		width 100%
+		transition none
+		position relative
+		&::before,&::after
+			content ''
+			position absolute
+			top 0
+			left 0
+			width 100%
+			height 100%
+			background-size 120%
+			background-repeat repeat-x
+			background-position 65% -3rem
+			@media screen and (min-width:320px),(max-width:375px)
+				background-size 120%
+			@media screen and (min-width:375px)
+				background-size contain
+				background-position center -3rem
+			@media screen and (min-width: 992px)
+				background-position 65% -6rem
+			opacity 1
+		&::before
+			background-image url(./img/lights-on.svg)
+			animation lights 1s steps(2, end) infinite reverse
+		&::after
+			background-image url(./img/lights-off.svg)
+			animation lights 1s steps(2, end) infinite
+		&.__bottom
+			transform rotate(180deg)
+	.snacks-and-drinks
+		background-image url(./img/snacks-and-drinks-mobile.svg)
+		background-repeat no-repeat
+		height 50vh
+		width 100%
+		background-position center
+		background-size contain
+		@media screen and (min-width: 992px)
+			background-image url(./img/snacks-and-drinks.svg)
+			width 80%
+			height 30vh
+		img
+			width 130%
+// end __lights
+
+// __location
+.__location
+	background-color $light_red
+	align-items flex-start
+	padding-top 12vh
+	.__wreaths
+		background-image url(./img/wreaths.svg)
+		background-repeat repeat-x
+		height 25vh
+		width 100%
+		background-position center
+		background-size contain
+		
+// end __location
+
+
+@keyframes flash{
+	from{
+		fill: $light_green;
+	}
+	to{
+		fill: $light_red;
+	}
+}
+
+#light-circle{
+	&:nth-of-type(odd){
+		animation: flash 1s steps(2) infinite;
+	}
+	&:nth-of-type(even){
+		animation: flash 1s steps(2) infinite reverse;
+	}
+}
