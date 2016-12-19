@@ -82,10 +82,18 @@ video {
   content: '';
   position: absolute;
   width: 100vw;
-  height: 1.5rem;
+  height: 2.5rem;
   background-image: url("./img/border.svg");
   background-repeat: repeat-x;
   left: 0;
+}
+@media screen and (min-width: 768px) {
+  .__first::before,
+  .__details::before,
+  .__first::after,
+  .__details::after {
+    height: 3rem;
+  }
 }
 .__first::before,
 .__details::before {
@@ -94,8 +102,8 @@ video {
 .__first::after,
 .__details::after {
   bottom: 0;
-  -webkit-transform: rotate(180deg);
-          transform: rotate(180deg);
+  -webkit-transform: rotate(180deg) translate3d(0, -0.1rem, 0);
+          transform: rotate(180deg) translate3d(0, -0.1rem, 0);
 }
 .__first {
   height: 100vh;
@@ -314,21 +322,42 @@ video {
   width: 130%;
 }
 .__location {
-  background-color: #ffcec8;
+  background-color: #232323;
   -webkit-box-align: start;
   -webkit-align-items: flex-start;
       -ms-flex-align: start;
               -ms-grid-row-align: flex-start;
           align-items: flex-start;
-  padding-top: 12vh;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
 }
 .__location .__wreaths {
   background-image: url("./img/wreaths.svg");
   background-repeat: repeat-x;
   height: 25vh;
   width: 100%;
+  background-position: center 100%;
+  background-size: contain;
+  position: relative;
+  z-index: 9999;
+  margin-top: 10vh;
+}
+.__location .__address {
+  position: relative;
+  z-index: 9999;
+  background-image: url("./img/holiday_land_fun_time_address-large.svg");
+  background-repeat: no-repeat;
+  height: 25rem;
+  width: 85%;
   background-position: center;
   background-size: contain;
+}
+@media screen and (min-width: 992px) {
+  .__location .__address {
+    width: 75%;
+    background-position: center 80%;
+  }
 }
 #light-circle:nth-of-type(odd) {
   -webkit-animation: flash 1s steps(2) infinite;
@@ -337,6 +366,13 @@ video {
 #light-circle:nth-of-type(even) {
   -webkit-animation: flash 1s steps(2) infinite reverse;
           animation: flash 1s steps(2) infinite reverse;
+}
+#snow {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: transparent;
+  z-index: 9997;
 }
 @-webkit-keyframes dance {
   0% {

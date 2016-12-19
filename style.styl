@@ -107,7 +107,9 @@ img, video
 		content ''
 		position absolute
 		width 100vw
-		height 1.5rem
+		height 2.5rem
+		@media screen and (min-width: 768px)
+			height 3rem
 		background-image url(./img/border.svg)
 		background-repeat repeat-x
 		left 0
@@ -115,7 +117,7 @@ img, video
 		top 0
 	&::after
 		bottom 0
-		transform rotate(180deg)
+		transform rotate(180deg)translate3d(0,-.1rem,0)
 
 .__first
 	height 100vh
@@ -240,15 +242,32 @@ img, video
 
 // __location
 .__location
-	background-color $light_red
+	background-color rgba(35,35,35,1)
 	align-items flex-start
-	padding-top 12vh
+	min-height 100vh
+	position relative
+	overflow hidden
 	.__wreaths
 		background-image url(./img/wreaths.svg)
 		background-repeat repeat-x
 		height 25vh
 		width 100%
+		background-position center 100%
+		background-size contain
+		position relative
+		z-index 9999
+		margin-top 10vh
+	.__address
+		position relative
+		z-index 9999
+		background-image url(./img/holiday_land_fun_time_address-large.svg)
+		background-repeat no-repeat
+		height 25rem
+		width 85%
 		background-position center
+		@media screen and (min-width: 992px)
+			width 75%
+			background-position center 80%
 		background-size contain
 		
 // end __location
@@ -271,3 +290,12 @@ img, video
 		animation: flash 1s steps(2) infinite reverse;
 	}
 }
+
+
+// __snow
+#snow
+	position absolute
+	width 100vw
+	height 100vh
+	background-color transparent
+	z-index 9997
