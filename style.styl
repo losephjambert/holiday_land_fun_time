@@ -107,17 +107,21 @@ img, video
 		content ''
 		position absolute
 		width 100vw
-		height 2.5rem
+		height 4rem
+		background-size 300%
+		z-index 9999
 		@media screen and (min-width: 768px)
-			height 3rem
+			height 8rem
+			background-size 200%
 		background-image url(./img/border.svg)
 		background-repeat repeat-x
+		background-position center 0
 		left 0
 	&::before
 		top 0
 	&::after
 		bottom 0
-		transform rotate(180deg)translate3d(0,-.1rem,0)
+		transform rotate(180deg)translate3d(0,0rem,0)
 
 .__first
 	height 100vh
@@ -153,6 +157,8 @@ img, video
 	.__img
 		width 13%
 		margin-right 1.5rem
+		position relative
+		z-index 9998
 		&:nth-of-type(2)
 			transform translate3d(0,-20vw,0)
 			@media screen and (min-width: 992px)
@@ -171,6 +177,7 @@ img, video
 				transform translate3d(0,-60vw,0)
 	#date-time
 		position absolute
+		left 0
 		bottom 0
 		width 100%
 		display flex
@@ -190,12 +197,14 @@ img, video
 	background-color ghostwhite
 	flex-flow column nowrap
 	justify-content space-between
+	margin-bottom 100vh
+	box-shadow 0 15px 50px 15px #F8F8FF
 	.light-row
 		@media screen and (min-width:320px),(max-width:375px)
 			height 25vh
 		@media screen and (min-width:375px)
-			max-height 25rem
-			height 25rem
+			max-height 20rem
+			height 20rem
 		width 100%
 		transition none
 		position relative
@@ -206,16 +215,18 @@ img, video
 			left 0
 			width 100%
 			height 100%
-			background-size 120%
 			background-repeat repeat-x
 			background-position 65% -3rem
 			@media screen and (min-width:320px),(max-width:375px)
 				background-size 120%
 			@media screen and (min-width:375px)
-				background-size contain
+				background-size 140%
 				background-position center -3rem
-			@media screen and (min-width: 992px)
-				background-position 65% -6rem
+			@media screen and (min-width: 400px)
+				background-position 65% -2rem
+				background-size 100%
+			@media screen and (min-width: 525px)
+				background-size contain
 			opacity 1
 		&::before
 			background-image url(./img/lights-on.svg)
@@ -229,7 +240,7 @@ img, video
 		background-image url(./img/snacks-and-drinks-mobile.svg)
 		background-repeat no-repeat
 		height 50vh
-		width 100%
+		width 90%
 		background-position center
 		background-size contain
 		@media screen and (min-width: 992px)
@@ -242,10 +253,17 @@ img, video
 
 // __location
 .__location
-	background-color rgba(35,35,35,1)
+	position fixed
+	top 0
+	right 0
+	bottom 0
+	left 0
+	z-index -1
+
+
+	background-color rgba(50,50,50,1)
 	align-items flex-start
-	min-height 100vh
-	position relative
+	height 100vh
 	overflow hidden
 	.__wreaths
 		background-image url(./img/wreaths.svg)
@@ -295,7 +313,9 @@ img, video
 // __snow
 #snow
 	position absolute
-	width 100vw
-	height 100vh
+	width 100%
+	height 600px
+	@media screen and (min-width: 768px)
+		height 800px
 	background-color transparent
 	z-index 9997

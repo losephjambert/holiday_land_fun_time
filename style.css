@@ -82,9 +82,12 @@ video {
   content: '';
   position: absolute;
   width: 100vw;
-  height: 2.5rem;
+  height: 4rem;
+  background-size: 300%;
+  z-index: 9999;
   background-image: url("./img/border.svg");
   background-repeat: repeat-x;
+  background-position: center 0;
   left: 0;
 }
 @media screen and (min-width: 768px) {
@@ -92,7 +95,8 @@ video {
   .__details::before,
   .__first::after,
   .__details::after {
-    height: 3rem;
+    height: 8rem;
+    background-size: 200%;
   }
 }
 .__first::before,
@@ -102,8 +106,8 @@ video {
 .__first::after,
 .__details::after {
   bottom: 0;
-  -webkit-transform: rotate(180deg) translate3d(0, -0.1rem, 0);
-          transform: rotate(180deg) translate3d(0, -0.1rem, 0);
+  -webkit-transform: rotate(180deg) translate3d(0, 0rem, 0);
+          transform: rotate(180deg) translate3d(0, 0rem, 0);
 }
 .__first {
   height: 100vh;
@@ -159,6 +163,8 @@ video {
 .__details .__img {
   width: 13%;
   margin-right: 1.5rem;
+  position: relative;
+  z-index: 9998;
 }
 .__details .__img:nth-of-type(2) {
   -webkit-transform: translate3d(0, -20vw, 0);
@@ -202,6 +208,7 @@ video {
 }
 .__details #date-time {
   position: absolute;
+  left: 0;
   bottom: 0;
   width: 100%;
   display: -webkit-box;
@@ -239,6 +246,8 @@ video {
   -webkit-justify-content: space-between;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  margin-bottom: 100vh;
+  box-shadow: 0 15px 50px 15px #f8f8ff;
 }
 .__lights .light-row {
   width: 100%;
@@ -253,8 +262,8 @@ video {
 }
 @media screen and (min-width: 375px) {
   .__lights .light-row {
-    max-height: 25rem;
-    height: 25rem;
+    max-height: 20rem;
+    height: 20rem;
   }
 }
 .__lights .light-row::before,
@@ -265,7 +274,6 @@ video {
   left: 0;
   width: 100%;
   height: 100%;
-  background-size: 120%;
   background-repeat: repeat-x;
   background-position: 65% -3rem;
   opacity: 1;
@@ -279,14 +287,21 @@ video {
 @media screen and (min-width: 375px) {
   .__lights .light-row::before,
   .__lights .light-row::after {
-    background-size: contain;
+    background-size: 140%;
     background-position: center -3rem;
   }
 }
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 400px) {
   .__lights .light-row::before,
   .__lights .light-row::after {
-    background-position: 65% -6rem;
+    background-position: 65% -2rem;
+    background-size: 100%;
+  }
+}
+@media screen and (min-width: 525px) {
+  .__lights .light-row::before,
+  .__lights .light-row::after {
+    background-size: contain;
   }
 }
 .__lights .light-row::before {
@@ -307,7 +322,7 @@ video {
   background-image: url("./img/snacks-and-drinks-mobile.svg");
   background-repeat: no-repeat;
   height: 50vh;
-  width: 100%;
+  width: 90%;
   background-position: center;
   background-size: contain;
 }
@@ -322,14 +337,19 @@ video {
   width: 130%;
 }
 .__location {
-  background-color: #232323;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  background-color: #323232;
   -webkit-box-align: start;
   -webkit-align-items: flex-start;
       -ms-flex-align: start;
               -ms-grid-row-align: flex-start;
           align-items: flex-start;
-  min-height: 100vh;
-  position: relative;
+  height: 100vh;
   overflow: hidden;
 }
 .__location .__wreaths {
@@ -369,10 +389,15 @@ video {
 }
 #snow {
   position: absolute;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 600px;
   background-color: transparent;
   z-index: 9997;
+}
+@media screen and (min-width: 768px) {
+  #snow {
+    height: 800px;
+  }
 }
 @-webkit-keyframes dance {
   0% {
