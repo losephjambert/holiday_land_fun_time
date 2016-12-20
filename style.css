@@ -50,8 +50,8 @@ video {
           align-items: center;
   margin-right: auto;
   margin-left: auto;
+  margin-bottom: 100vh;
   width: 100%;
-  min-height: 400vh;
 }
 .__first,
 .__details,
@@ -246,7 +246,6 @@ video {
   -webkit-justify-content: space-between;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  margin-bottom: 100vh;
   box-shadow: 0 15px 50px 15px #f8f8ff;
 }
 .__lights .light-row {
